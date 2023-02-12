@@ -3,8 +3,8 @@ import { useTypingContext } from '../../lib/contexts/typingContext';
 import useTimer from '../../lib/hooks/useTimer';
 import Button from '../buttons/Button';
 
-const Timer = memo(({ resetTyping, isEqual, greater }) => {
-	const { setTyping, setResetTextGener } = useTypingContext();
+const Timer = memo(({ resetTyping, isEqual, isZero }) => {
+	const { btnGenState, setBtnGenState, setResetTextGener } = useTypingContext();
 	const { setStartTimer, setStopTimer, timerValue, setResetTimer } = useTimer();
 
 	useEffect(() => {
@@ -12,31 +12,40 @@ const Timer = memo(({ resetTyping, isEqual, greater }) => {
 	}, [isEqual, setStopTimer]);
 
 	useEffect(() => {
-		if (greater) setStartTimer();
-	}, [greater, setStartTimer]);
+		if (isZero) setStartTimer();
+	}, [isZero, setStartTimer]);
 
 	return (
 		<>
-			<div className='flex justify-between'>
-				<p className='text-slate-900 text-xl'>
+			<div className='flex justify-between items-center'>
+				<p className='text-slate-700 text-xl rounded-lg bg-white/70 px-2 py-1 cus-shadow'>
 					{timerValue} <span className='text-slate-700'>sec</span>
 				</p>
 				<div className='flex gap-4'>
-					<Button kind='secondary' disabled>
+					<Button
+						disabled={!isEqual}
+						kind='secondary'
+						onClick={() => {
+							resetTyping();
+							setResetTimer();
+							setBtnGenState(false);
+						}}
+					>
 						Try Again
 					</Button>
-					<Button kind='secondary' disabled>
+					<Button disabled={!isEqual} kind='secondary'>
 						Save Score
 					</Button>
 					<Button
+						disabled={!btnGenState || !isEqual}
 						onClick={() => {
-							setTyping();
+							setBtnGenState();
 							setResetTimer();
 							resetTyping();
 							setResetTextGener();
 						}}
 					>
-						New Typing...
+						Clear
 					</Button>
 				</div>
 			</div>

@@ -14,7 +14,7 @@ const useTimer = () => {
 
 		intervalId.current = setInterval(() => {
 			setNow(Date.now());
-		}, 10);
+		}, 50);
 	}, []);
 
 	const setStopTimer = () => clearInterval(intervalId.current);
@@ -26,7 +26,7 @@ const useTimer = () => {
 	};
 
 	useEffect(() => {
-		if (startTime && now) setTimerValue(((now - startTime) / 1000).toFixed(3));
+		if (startTime && now) setTimerValue(((now - startTime) / 1000).toFixed(2));
 	}, [startTime, now]);
 
 	return { setStartTimer, setStopTimer, timerValue, setResetTimer };

@@ -4,46 +4,38 @@ import useTextGenereted, {
 	loadTextGenerated
 } from '../../lib/hooks/useTextGener';
 import Button from '../buttons/Button';
+import AuthorInformation from './AuthorInformation';
 import TextAreaTyping from './TextAreaTyping';
 
 const Generate = () => {
 	const { textGenerated, setTextAction, setResetTextGener } =
 		useTextGenereted();
 
-	const [typing, setTyping] = useState(false);
+	const [btnGenState, setBtnGenState] = useState(false);
 
 	const contextValue = useMemo(
 		() => ({
-			setTyping,
+			btnGenState,
+			setBtnGenState,
 			setResetTextGener
 		}),
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-		[typing]
+		[btnGenState]
 	);
 
 	return (
 		<>
 			<Button
-				disabled={textGenerated.loading || typing}
+				disabled={textGenerated.loading || btnGenState}
 				onClick={() => loadTextGenerated(setTextAction)}
 			>
 				Generate
 			</Button>
-			<p className='text-lg my-4'>
-				<span className='text-slate-600'>
-					{textGenerated.info.author && 'Author: '}{' '}
-				</span>
-				<span className='text-slate-900 font-semibold'>
-					{textGenerated?.info.author}
-				</span>
-			</p>
-			<p className='text-lg my-4 italic text-slate-900 rounded-lg bg-white/70 px-4 py-2 cus-shadow'>
-				{textGenerated?.info.content}
-			</p>
+			<AuthorInformation textGenerated={textGenerated} />
 			<TypingContext.Provider value={contextValue}>
 				<TextAreaTyping
 					valueText={textGenerated?.info.content}
-					setTyping={setTyping}
+					setBtnGenState={setBtnGenState}
 				/>
 			</TypingContext.Provider>
 		</>
