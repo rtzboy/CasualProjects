@@ -1,9 +1,8 @@
 const generateText = async () => {
 	try {
-		const res = await fetch('https://api.quotable.io/random?minLength=50');
+		const res = await fetch('https://api.quotable.io/random?maxLength=40');
 		if (res.ok) {
 			const data = await res.json();
-			console.log(data);
 			return {
 				success: true,
 				message: 'success',

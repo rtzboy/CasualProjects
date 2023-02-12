@@ -2,3 +2,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+	.cus-shadow {
+		box-shadow: 0px 0px 8px rgba(69, 69, 69, 0.2);
+	}
+
+	.cus-shadow-md {
+		box-shadow: 0px 0px 12px rgba(69, 69, 69, 0.5);
+	}
+
+	.cus-shadow-d {
+		box-shadow: 0px 0px 0px rgba(69, 69, 69, 0.5);
+	}
+}

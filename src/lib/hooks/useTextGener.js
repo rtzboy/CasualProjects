@@ -35,13 +35,25 @@ const useTextGenereted = () => {
 		}));
 	};
 
+	const setResetTextGener = () => {
+		setTextGenerated({
+			info: {
+				author: '',
+				content: ''
+			},
+			loading: undefined,
+			error: undefined
+		});
+	};
+
 	return {
 		textGenerated,
 		setTextAction: {
 			startGetQuote,
 			setInfoQuote,
 			setErrQuote
-		}
+		},
+		setResetTextGener
 	};
 };
 

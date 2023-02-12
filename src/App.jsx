@@ -1,11 +1,10 @@
-import Generate from './components/Generate';
+import TypingTest from './components/typingTest/TypingTest';
 
 const App = () => {
 	return (
-		<div className='max-w-screen-md mx-auto'>
-			<h1 className='text-xl my-2'>Challenge typing</h1>
-			<Generate />
-		</div>
+		<>
+			<TypingTest />
+		</>
 	);
 };
 

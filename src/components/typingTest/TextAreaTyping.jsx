@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import { memo, useCallback, useEffect, useState } from 'react';
 
 import Letter from './Letter';
 import Timer from './Timer';
 
-const TextAreaTyping = ({ valueText }) => {
+const TextAreaTyping = memo(({ valueText, setTyping }) => {
 	const [isEqual, setIsEqual] = useState(false);
 	const [greaterThan, setGreaterThan] = useState(false);
 	const [value, setValue] = useState(null);
@@ -13,10 +13,13 @@ const TextAreaTyping = ({ valueText }) => {
 
 	useEffect(() => {
 		if (value && valueText) {
-			if (value.length > 0) setGreaterThan(true);
+			if (value.length > 0) {
+				setGreaterThan(true);
+				setTyping(true);
+			}
 			if (value?.length === valueText?.length) setIsEqual(true);
 		}
-	}, [valueText, value]);
+	}, [valueText, value, setTyping]);
 
 	const calculateLetter = val => {
 		setValue(val);
@@ -38,18 +41,29 @@ const TextAreaTyping = ({ valueText }) => {
 		setCorrectLetter(textArr);
 	}, [valueTextSplited, value]);
 
+	const setResetTextAreaTyping = useCallback(() => {
+		setIsEqual(false);
+		setGreaterThan(false);
+		setValue(null);
+		setCorrectLetter([]);
+		setValueTextSplited('');
+		setPrevValue(null);
+	}, []);
+
 	return (
-		<div>
+		<div className='mt-4'>
 			<textarea
-				className='text-lg outline-none border-2 rounded-md p-2 border-violet-500 resize-none w-full'
+				className='text-lg outline-none cus-shadow focus:cus-shadow-md px-3 py-1 resize-none w-full transition-all rounded-lg'
 				onChange={evt => {
 					calculateLetter(evt.target.value);
 				}}
 				wrap='true'
-				rows='5'
+				rows='3'
+				placeholder={valueText && 'Start typing...'}
+				value={value || ''}
 				onPaste={evt => evt.preventDefault()}
 			></textarea>
-			<p className='text-lg'>
+			<p className='text-lg my-4 rounded-lg bg-white/70 px-4 py-2 cus-shadow'>
 				{valueText?.split('').map((letter, idx) => {
 					return (
 						<Letter
@@ -60,9 +74,15 @@ const TextAreaTyping = ({ valueText }) => {
 					);
 				})}
 			</p>
-			<Timer isEqual={isEqual} greater={greaterThan} />
+			<Timer
+				resetTyping={setResetTextAreaTyping}
+				isEqual={isEqual}
+				greater={greaterThan}
+			/>
 		</div>
 	);
-};
+});
+
+TextAreaTyping.displayName = 'Text Area Typing';
 
 export default TextAreaTyping;
