@@ -2,6 +2,7 @@ import { memo, useEffect } from 'react';
 import { useTypingContext } from '../../lib/contexts/typingContext';
 import useTimer from '../../lib/hooks/useTimer';
 import Button from '../buttons/Button';
+import StopTimer from './StopTimer';
 
 const Timer = memo(({ resetTyping, isEqual, isZero }) => {
 	const { btnGenState, setBtnGenState, setResetTextGener } = useTypingContext();
@@ -18,9 +19,7 @@ const Timer = memo(({ resetTyping, isEqual, isZero }) => {
 	return (
 		<>
 			<div className='flex justify-between items-center'>
-				<p className='text-slate-700 text-xl rounded-lg bg-white/70 px-2 py-1 cus-shadow'>
-					{timerValue} <span className='text-slate-700'>sec</span>
-				</p>
+				<StopTimer timerValue={timerValue} />
 				<div className='flex gap-4'>
 					<Button
 						disabled={!isEqual}

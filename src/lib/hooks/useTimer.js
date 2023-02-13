@@ -14,7 +14,7 @@ const useTimer = () => {
 
 		intervalId.current = setInterval(() => {
 			setNow(Date.now());
-		}, 50);
+		}, 10);
 	}, []);
 
 	const setStopTimer = () => clearInterval(intervalId.current);
