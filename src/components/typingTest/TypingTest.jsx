@@ -3,14 +3,14 @@ import Generate from './Generate';
 
 const TypingTest = () => {
 	return (
-		<div className='w-full h-screen'>
+		<div className='h-screen w-full'>
 			<img
 				src={background}
 				alt=''
-				className='w-full h-full object-cover opacity-40 absolute'
+				className='absolute h-full w-full object-cover opacity-40'
 			/>
-			<div className='relative z-50 max-w-screen-xl mx-auto px-8 flex flex-col items-center h-full justify-center'>
-				<h1 className='text-2xl mb-4'>Typing Test</h1>
+			<div className='relative z-50 mx-auto flex h-full max-w-screen-xl flex-col items-center justify-center px-8'>
+				<h1 className='mb-4 text-2xl'>Typing Test</h1>
 				<Generate />
 			</div>
 		</div>

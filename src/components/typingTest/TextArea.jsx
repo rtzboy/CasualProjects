@@ -2,7 +2,7 @@ const TextArea = ({ className, ...props }) => {
 	return (
 		<textarea
 			{...props}
-			className={`outline-none resize-none rounded-lg ${className || ''}`}
+			className={`resize-none rounded-lg outline-none ${className || ''}`}
 			wrap='true'
 			rows='4'
 		></textarea>

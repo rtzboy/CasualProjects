@@ -18,7 +18,7 @@ const Timer = memo(({ resetTyping, isEqual, isZero }) => {
 
 	return (
 		<>
-			<div className='flex justify-between items-center'>
+			<div className='flex items-center justify-between'>
 				<StopTimer timerValue={timerValue} />
 				<div className='flex gap-4'>
 					<Button

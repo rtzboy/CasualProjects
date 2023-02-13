@@ -11,7 +11,7 @@ const TextAreaTyping = memo(({ valueText, setBtnGenState }) => {
 	return (
 		<div className='mt-4'>
 			<TextArea
-				className='disabled:text-slate-400 min-w-[600px] text-lg cus-shadow focus:cus-shadow-md px-3 py-1 w-full transition-all'
+				className='cus-shadow focus:cus-shadow-md w-full min-w-[600px] px-3 py-1 text-lg transition-all disabled:text-slate-400'
 				disabled={!valueText || infoTyping.isEqual}
 				onChange={evt => {
 					calculateLetter(evt.target.value);
