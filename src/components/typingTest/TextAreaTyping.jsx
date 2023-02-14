@@ -1,8 +1,8 @@
 import { memo } from 'react';
 import useTyping from '../../lib/hooks/useTyping';
 import ArrOfLetters from './ArrOfLetters';
+import Timer from './clock/Timer';
 import TextArea from './TextArea';
-import Timer from './Timer';
 
 const TextAreaTyping = memo(({ valueText, setBtnGenState }) => {
 	const { infoTyping, correctLetter, calculateLetter, setResetTextAreaTyping } =
@@ -22,6 +22,7 @@ const TextAreaTyping = memo(({ valueText, setBtnGenState }) => {
 			/>
 			<ArrOfLetters valueText={valueText} correctLetter={correctLetter} />
 			<Timer
+				correctLetter={correctLetter}
 				resetTyping={setResetTextAreaTyping}
 				isEqual={infoTyping.isEqual}
 				isZero={infoTyping.isZero}
