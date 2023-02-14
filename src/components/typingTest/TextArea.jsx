@@ -4,7 +4,7 @@ const TextArea = ({ className, ...props }) => {
 			{...props}
 			className={`resize-none rounded-lg outline-none ${className || ''}`}
 			wrap='true'
-			rows='4'
+			rows='3'
 		></textarea>
 	);
 };

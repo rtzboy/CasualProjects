@@ -58,7 +58,7 @@ const Timer = memo(({ correctLetter, resetTyping, isEqual, isZero }) => {
 						kind='secondary'
 						onClick={() => handleResults(correctLetter)}
 					>
-						See Results
+						Results
 					</Button>
 					<Button
 						disabled={!btnGenState || !isEqual}
