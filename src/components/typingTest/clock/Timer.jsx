@@ -56,17 +56,30 @@ const Timer = memo(({ correctLetter, resetTyping, isEqual, isZero }) => {
 					>
 						Results
 					</Button>
-					<Button
-						disabled={!btnGenState || !isEqual}
-						onClick={() => {
-							setBtnGenState();
-							setResetTimer();
-							resetTyping();
-							setResetTextGener();
-						}}
-					>
-						Clear
-					</Button>
+					{isEqual ? (
+						<Button
+							disabled={!btnGenState || !isEqual}
+							onClick={() => {
+								setBtnGenState();
+								setResetTimer();
+								resetTyping();
+								setResetTextGener();
+							}}
+						>
+							Clear
+						</Button>
+					) : (
+						<Button
+							disabled={!isZero}
+							onClick={() => {
+								resetTyping();
+								setResetTimer();
+								setBtnGenState(false);
+							}}
+						>
+							Cancel
+						</Button>
+					)}
 				</div>
 			</div>
 			{viewResult && (
