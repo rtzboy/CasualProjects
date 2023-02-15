@@ -1,7 +1,13 @@
+import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import Button from '../buttons/Button';
 
 const Modal = ({ children, close }) => {
+	useEffect(() => {
+		document.body.classList.add('overflow-hidden');
+		return () => document.body.classList.remove('overflow-hidden');
+	}, []);
+
 	return createPortal(
 		<div className='fixed inset-0 z-[999] flex items-center justify-center bg-slate-800/75'>
 			<div className='relative pb-12'>
