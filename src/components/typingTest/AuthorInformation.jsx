@@ -3,15 +3,17 @@ const AuthorInformation = ({ textGenerated }) => {
 	return (
 		<>
 			<p className='my-4 text-lg'>
-				<span className='text-slate-600'>
+				<span className='text-slate-700'>
 					{textGenerated.info.author && 'Author: '}{' '}
 				</span>
-				<span className='font-semibold text-slate-900'>
+				<span className='font-semibold text-slate-800'>
 					{textGenerated.info.author}
 				</span>
 			</p>
-			<p className='cus-shadow my-4 rounded-lg bg-white/70 px-4 py-2 text-lg italic text-slate-900'>
-				&quot;{textGenerated.info.content}&quot;
+			<p className='my-2 text-center text-lg italic text-slate-900'>
+				<span className='inline-block rounded-lg bg-white/50 px-2 py-2 tracking-wide shadow-sm'>
+					&quot;{textGenerated.info.content}&quot;
+				</span>
 			</p>
 		</>
 	);

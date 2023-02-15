@@ -10,7 +10,6 @@ const Timer = memo(({ correctLetter, resetTyping, isEqual, isZero }) => {
 	const { btnGenState, setBtnGenState, setResetTextGener } = useTypingContext();
 	const { setStartTimer, setStopTimer, timerValue, setResetTimer } = useTimer();
 
-	// const [toggleResult, setToggleResult] = useState(false);
 	const [viewResult, setViewResult] = useState();
 
 	useEffect(() => {
@@ -37,7 +36,7 @@ const Timer = memo(({ correctLetter, resetTyping, isEqual, isZero }) => {
 	return (
 		<>
 			<div
-				className='flex items-center justify-between'
+				className='my-4 flex flex-col items-center gap-8 md:flex-row md:items-center md:justify-between'
 				onClick={() => console.log(' - Click timer div')}
 			>
 				<StopTimer timerValue={timerValue} />
@@ -72,12 +71,12 @@ const Timer = memo(({ correctLetter, resetTyping, isEqual, isZero }) => {
 						Clear
 					</Button>
 				</div>
-				{viewResult && (
-					<Modal close={() => setViewResult()}>
-						<ResultTest {...viewResult} />
-					</Modal>
-				)}
 			</div>
+			{viewResult && (
+				<Modal close={() => setViewResult()}>
+					<ResultTest {...viewResult} />
+				</Modal>
+			)}
 		</>
 	);
 });

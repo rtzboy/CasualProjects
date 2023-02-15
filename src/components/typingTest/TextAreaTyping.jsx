@@ -13,18 +13,19 @@ const TextAreaTyping = memo(({ valueText, setBtnGenState }) => {
 	const [mode, setMode] = useState(false);
 
 	return (
-		<div className='mt-4'>
-			<p className='p-2'>
+		<div className=''>
+			<p className='py-2'>
 				<button
 					disabled={infoTyping.isZero && !infoTyping.isEqual}
-					className='inline-block cursor-pointer select-none rounded-md bg-slate-200 p-1 text-slate-800 hover:opacity-90 disabled:opacity-60 hover:disabled:cursor-auto'
+					className='flex cursor-pointer select-none gap-2 rounded-md bg-slate-200 px-2 py-1 text-slate-800 shadow hover:opacity-90 disabled:opacity-60 hover:disabled:cursor-auto'
 					onClick={() => setMode(!mode)}
 				>
-					{mode ? <Eye /> : <EyeClosed />}
+					<span>Guide</span>
+					<span>{mode ? <Eye /> : <EyeClosed />}</span>
 				</button>
 			</p>
 			<TextArea
-				className='cus-shadow focus:cus-shadow-md w-full min-w-[600px] px-3 py-1 text-lg transition-all disabled:text-slate-400'
+				className='cus-shadow focus:cus-shadow-md w-full px-3 py-1 text-center text-lg transition-all disabled:text-slate-400'
 				disabled={!valueText || infoTyping.isEqual}
 				onChange={evt => {
 					calculateLetter(evt.target.value);
