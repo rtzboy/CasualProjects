@@ -35,10 +35,7 @@ const Timer = memo(({ correctLetter, resetTyping, isEqual, isZero }) => {
 	};
 	return (
 		<>
-			<div
-				className='my-4 flex flex-col items-center gap-8 md:flex-row md:items-center md:justify-between'
-				onClick={() => console.log(' - Click timer div')}
-			>
+			<div className='my-4 flex flex-col items-center gap-8 md:flex-row md:items-center md:justify-between'>
 				<StopTimer timerValue={timerValue} />
 				<div className='flex gap-4'>
 					<Button
